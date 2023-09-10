@@ -5,6 +5,27 @@ import { Link } from 'react-router-dom';
 import icon from '../images/cryptocurrency.png';
 
 const Navbar = () => {
+
+    const menuItems = [{
+        key: 1,
+        label: (
+            <Link to='/'>Home</Link>
+        ),
+        icon: <HomeOutlined />
+    },{
+        key: 2,
+        label: (
+            <Link to='/cryptocurrencies'>CryptoCurrencies</Link>
+        ),
+        icon: <FundOutlined />
+    },{
+        key: 3,
+        label: (
+            <Link to='/news'>News</Link>
+        ),
+        icon: <BulbOutlined />
+    }];
+    
     return (
         <div className='nav-container'>
             <div className='logo-container'>
@@ -14,16 +35,7 @@ const Navbar = () => {
                 </Typography.Title>  
             </div>
             
-            <Menu theme='dark'>
-                <Menu.Item icon={<HomeOutlined />}>
-                    <Link to='/'>Home</Link>
-                </Menu.Item>
-                <Menu.Item icon={<FundOutlined />}>
-                    <Link to='/cryptocurrencies'>CryptoCurrencies</Link>
-                </Menu.Item>
-                <Menu.Item icon={<BulbOutlined />}> 
-                    <Link to='/news'>News</Link>
-                </Menu.Item>
+            <Menu theme='dark' items={menuItems}>
             </Menu>
         </div>
     );

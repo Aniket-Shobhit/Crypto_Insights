@@ -6,7 +6,7 @@ const cryptoNewsApiHeaders = {
     'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
 };
 
-const baseUrl = 'https://bing-news-search1.p.rapidapi.com/news';
+const baseUrl = 'https://bing-news-search1.p.rapidapi.com';
 
 export const cryptoNewsApi = createApi({
     reducerPath: 'cryptoNewsApi',
@@ -18,4 +18,4 @@ export const cryptoNewsApi = createApi({
     })
 });
 
-export const { useCryptoNewsApiQuery } = cryptoNewsApi;
+export const { useGetCryptoNewsQuery } = cryptoNewsApi;
