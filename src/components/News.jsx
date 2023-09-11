@@ -43,7 +43,7 @@ const News = ({simplified}) => {
                                 <Title className='news-title' level={4}>
                                     {news.name}
                                 </Title>
-                                <img style={{maxWidth:'200px', maxHeight:'100px'}}src={news?.image?.thumbnail?.contentUrl} />
+                                <img style={{maxWidth:'200px', maxHeight:'100px'}}src={news?.image?.thumbnail?.contentUrl} alt="crypto" />
                             </div>
                             <p>
                                 {news.description.length > 100
