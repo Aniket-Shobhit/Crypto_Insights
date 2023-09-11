@@ -23,28 +23,24 @@ const LineChart = ({coinHistory, currentPrice, coinName}) => {
 
     const data = {
         labels: coinTimeStamp,
-        datasets: [
-            {
-                labels: 'Price in USD',
-                data: coinPrice,
-                fill: false,
-                backgroundColor: '#0071bd',
-                borderColor: '#0071bd'
-            }
-        ]
+        datasets: [{
+            label: 'Price in USD',
+            data: coinPrice,
+            fill: false,
+            backgroundColor: '#0071bd',
+            borderColor: '#0071bd'
+        }]
     }
 
     const options = {
         scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }
-            ]
-        }
-    }
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                },
+            }],
+        },
+    };
 
     return (
         <>
@@ -55,7 +51,7 @@ const LineChart = ({coinHistory, currentPrice, coinName}) => {
                     <Title level={5} className='current-price'>Current {coinName} Price: $ {currentPrice}</Title>
                 </Col>
             </Row>
-            <Line data={data} options={options}/>
+            <Line data={data} options={options} />
         </>
     );
 };
