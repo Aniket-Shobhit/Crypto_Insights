@@ -4,7 +4,7 @@ import millify from 'millify';
 import { Col, Row, Typography, Select } from 'antd';
 
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
-import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
+import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi';
 import LineChart from './LineChart';
 
 const { Option } = Select;
@@ -14,11 +14,12 @@ const CryptoDetails = () => {
     const { coinId } = useParams();
     const [timePeriod, setTimePeriod] = useState('7d');
     const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+    const { data: coinHistory } = useGetCryptoHistoryQuery({coinId, timePeriod});
     const cryptoDetails = data?.data?.coin;
     
-    if(isFetching) return '...Loading';
+    if(isFetching) return 'Loading...';
 
-    console.log(cryptoDetails.links);
+    console.log(coinHistory);
 
     const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -90,7 +91,7 @@ const CryptoDetails = () => {
                         </p>
                     </Col>
                     {genericStats.map(({ icon, title, value }) => (
-                        <Col className='coin-stats' key={value}>
+                        <Col className='coin-stats' key={title}>
                             <Col className='coin-stats-name'>
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -116,7 +117,7 @@ const CryptoDetails = () => {
                         {cryptoDetails.name} Links
                     </Title>
                     {cryptoDetails.links.map((link) => (
-                        <Row className='coin-link' key={link.name}>
+                        <Row className='coin-link' key={link.url}>
                             <Title level={5} className='link-name'>
                                 {link.type}
                             </Title>
