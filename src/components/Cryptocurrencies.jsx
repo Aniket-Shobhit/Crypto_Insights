@@ -13,8 +13,14 @@ const Cryptocurrencies = ({ simplified }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        const searchedData = cryptosList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase()));
-        setCryptos(searchedData);
+        // debouncing
+        const debouncing = setTimeout(() => {
+            const searchedData = cryptosList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setCryptos(searchedData);
+        }, 400);
+        return () => {
+            clearTimeout(debouncing);
+        }
     }, [cryptosList, searchTerm]);
 
     if(isFetching) return <Loader />;
