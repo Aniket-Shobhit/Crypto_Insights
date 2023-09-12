@@ -61,5 +61,6 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Aniket-Shobhit/Crypto_Insights/issues"
-  }
+  },
+  "homepage": "https://crypto-insight-self.vercel.app/"
 }
